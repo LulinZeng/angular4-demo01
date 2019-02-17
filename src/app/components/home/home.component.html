@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>用户信息</h1>  
+  <form (submit)="onSubmit(isEdit)">
+    <div class="list-group">
+      <label>姓名：</label>
+      <input type="text" [(ngModel)]="user.name" class="form-control" name="name">
+    </div>
+    <div class="list-group">
+      <label>邮箱：</label>
+      <input type="text" [(ngModel)]="user.email" class="form-control" name="email">
+    </div>
+    <div class="list-group">
+      <label>电话：</label>
+      <input type="text" [(ngModel)]="user.phone" class="form-control" name="phone">
+    </div>
+    <input type="submit" value="提交" class="btn btn-success">
+  </form>
+  <div *ngFor="let user of users">
+    <div class="well">
+      <ul class="list-group">
+        <li class="list-group-item">{{user.name}}</li>
+        <li class="list-group-item">{{user.email}}</li>
+        <li class="list-group-item">{{user.phone}}</li>
+      </ul>
+      <button (click)="updateUser(user)" class="btn btn-danger">编辑</button>
+      <button (click)="deleteUser(user.id)" class="btn btn-danger">删除</button>
+      <a [routerLink]="'user/'+user.id" class="btn btn-primary pull-right">详情</a>
+    </div>
+
+  </div>
+</div>

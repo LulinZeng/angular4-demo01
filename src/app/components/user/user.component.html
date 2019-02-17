@@ -1,0 +1,41 @@
+<!-- 绑定数据 -->
+<h1>Holle {{name}}</h1>
+<div class="well">
+  <ul class="list-group">
+    <li class="list-item">邮箱：{{email}}</li>
+    <li class="list-item">电话：{{phone}}</li>
+    <li class="list-item">地址：{{address.city}}{{address.state}}{{address.street}}</li>
+  </ul>
+  <h3>{{name}} 爱好！</h3>
+  <div *ngFor="let hobby of hobbies,let i=index">
+    <ul class="list-group">
+      <li class="list-item">{{hobby}} <button (click)="deleteHobby(index)">X</button></li>
+    </ul>
+  </div>
+  <h3><button (click)="addHobby(Hobby.value)">添加我的爱好！</button> <input type="text" #Hobby></h3>
+  <button (click)="toggleInput()">是否编辑用户信息</button>
+  <div *ngIf="isEdit">
+    <form>
+      <div>
+        <label>邮箱：</label>
+        <input type="text" [(ngModel)]="name" name="name" class="form-control">
+      </div>
+      <div>
+        <label>手机：</label>
+        <input type="text" [(ngModel)]="email" name="email" class="form-control">
+      </div>
+      <div>
+        <label>城市：</label>
+        <input type="text" [(ngModel)]="address.city" name="city" class="form-control">
+      </div>
+      <div>
+          <label>地区</label>
+          <input type="text" [(ngModel)]="address.state" name="state" class="form-control">
+        </div>
+        <div>
+            <label>街道</label>
+            <input type="text" [(ngModel)]="address.street" name="street" class="form-control">
+          </div>
+    </form>
+  </div>
+</div>
